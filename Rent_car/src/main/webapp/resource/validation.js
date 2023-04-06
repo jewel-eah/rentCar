@@ -1,3 +1,4 @@
+
 function checkValues(htmlForm) {
 
 	// 항목의 값이 없으면 -> /join 페이지로 이동 ( 기존 입력된 항목을 파라미터로 들고감)
@@ -19,18 +20,18 @@ function checkValues(htmlForm) {
 
 	if (cusname != "")
 		url += "&cusname=" + cusname;
-	else if (contact != "")
+	if (contact != "")
 		url += "&contact=" + contact;
-	else if (email != "")
-		url += "&contact=" + email;
-	else if (id != "")
-		url += "&contact=" + id;
-	else if (password != "")
-		url += "&contact=" + password;
-	else if (age != "")
-		url += "&contact=" + age;
-	else if (joindate != "")
-		url += "&contact=" + joindate;
+	if (email != "")
+		url += "&email=" + email;
+	if (id != "")
+		url += "&id=" + id;
+	if (password != "")
+		url += "&password=" + password;
+	if (age != "")
+		url += "&age=" + age;
+	if (joindate != "")
+		url += "&joindate=" + joindate;
 
 
 	if (cusname === "") {
@@ -69,4 +70,5 @@ function checkValues(htmlForm) {
 	else{
 		htmlForm.submit();
 	}
+
 }

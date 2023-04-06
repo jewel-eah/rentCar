@@ -5,12 +5,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="resource/index.js"></script>
 </head>
 <body>
 <jsp:include page="header"></jsp:include>
 <%
-DBManager.getConnection();
-%>
+Object welcome = request.getAttribute("welcome");
+if(welcome != null && (boolean) welcome) {%>
+	<script>alertWelcome();</script>
+<%} %>
 	<section>
 		<h1>붕붕붕 렌트카</h1>
 	</section>

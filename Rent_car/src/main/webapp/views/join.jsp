@@ -1,3 +1,4 @@
+<%@page import="java.sql.Timestamp"%>
 <%@page import="customer.controller.CustomerDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -23,7 +24,7 @@
 
 	<section>
 		<h2>회원가입</h2>
-		<form method="POST" action="../Service">
+		<form method="POST" action="../service">
 			<input type="hidden" name="command" value="join">
 			<table border="1">
 				<tr>
@@ -70,7 +71,7 @@
 				<tr>
 					<th>가입일자</th>
 					<td><input type="date" id="joindate" name="joindate"
-						value="<%=joindate != null ? joindate : ""%>"
+						value="<%=joindate != null ? joindate : new Timestamp(System.currentTimeMillis()).toString().split(" ")[0]%>"
 						<%=joindate == null ? "autofocus" : ""%>></td>
 				</tr>
 			</table>

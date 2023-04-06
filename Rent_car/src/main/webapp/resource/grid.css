@@ -33,7 +33,10 @@ nav {
 ul {
 	display: flex;
 	list-style: none;
-		padding: 0 20px;
+}
+
+li {
+	padding: 0 30px;
 }
 
 section {
@@ -57,5 +60,26 @@ a {
 	text-decoration: none;
 	cursor: pointer;
 	color: black;
+}
+	
+table {
+	margin: 20px auto;
+	border: 1px solid grey;
+	border-collapse: collapse;
+}
+
+td> input {
+	border: none;
+	outline: none;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	
+	width: fit-content;
+	margin: auto;
 }
 

@@ -14,15 +14,16 @@
 	</welcome-file-list>
 
 
-	<servlet-mapping>
-		<servlet-name>Service</servlet-name>
-		<url-pattern>/Service</url-pattern>
-	</servlet-mapping>
-	
 	<servlet>
 		<servlet-name>Service</servlet-name>
-		<servlet-class>customer.controller.Serivce</servlet-class>
+		<servlet-class>controller.Service</servlet-class>
 	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>Service</servlet-name>
+		<url-pattern>/service</url-pattern>
+	</servlet-mapping>
+	
 
 	<servlet>
 		<servlet-name>join</servlet-name>
@@ -35,21 +36,18 @@
 		<url-pattern>/join</url-pattern>
 	</servlet-mapping>	
 	
+	<servlet>
+		<servlet-name>header</servlet-name>
+		<jsp-file>/views/header.jsp</jsp-file>
+	</servlet>
+	
 	<servlet-mapping>
 		<servlet-name>header</servlet-name>
 		<url-pattern>/header</url-pattern>
 	</servlet-mapping>
 
-	<servlet>
-		<servlet-name>header</servlet-name>
-		<jsp-file>/views/header.jsp</jsp-file>
-	</servlet>
 
 
-	<servlet-mapping>
-		<servlet-name>footer</servlet-name>
-		<url-pattern>/footer</url-pattern>
-	</servlet-mapping>
 
 	<servlet>
 		<servlet-name>footer</servlet-name>
@@ -57,7 +55,10 @@
 	</servlet>
 
 	
+	<servlet-mapping>
+		<servlet-name>footer</servlet-name>
+		<url-pattern>/footer</url-pattern>
+	</servlet-mapping>
 
 
 </web-app>
-
