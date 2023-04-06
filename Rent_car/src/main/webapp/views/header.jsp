@@ -5,8 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="../resource/grid.css">
-<title>보석 렌트카</title>
+<title>뿡뿡이 렌트카</title>
 </head>
+<%
+System.out.println("logid: "+ session.getAttribute("log"));
+%>
 	<header>
 		<h1>붕붕붕 렌트카</h1>
 	</header>
@@ -18,8 +21,9 @@
 			<li><a href="comuunity">커뮤니티</a></li>
 		</ul>
 		<ul>
-			<li><a href="login">로그인</a></li>
+			<li><a href=<%=session.getAttribute("log") == null ? "login" : "/"%>><%=session.getAttribute("log") == null ? "login" : "logout"%></a></li>
 			<li><a href="join">회원가입</a></li>
 		</ul>
 	</nav>
+	<script src="..resource/logout.js"></script>
 </html>

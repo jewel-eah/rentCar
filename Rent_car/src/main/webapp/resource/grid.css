@@ -8,7 +8,7 @@
 
 body {
 	display: grid;
-	grid-template-rows: 120px 80px auto 50px;
+	grid-template-rows: 120px 40px auto 50px;
 	height: 100vh;
 }
 
@@ -33,11 +33,16 @@ nav {
 ul {
 	display: flex;
 	list-style: none;
+								
 }
 
+/* list에 패딩(안쪽마진)을 상 > 우 > 하 > 좌
+	두개 넣으면 0(상/하) 20 (좌/우)
+ */
 li {
-	padding: 0 30px;
+	padding: 0 40px;
 }
+
 
 section {
 	background-color: #FEFCF3;
@@ -63,9 +68,9 @@ a {
 }
 	
 table {
-	margin: 20px auto;
-	border: 1px solid grey;
-	border-collapse: collapse;
+	width: 400px;
+	padding: 10px;
+	outline: none;
 }
 
 td> input {
@@ -77,9 +82,17 @@ form {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	align-items: center;
+	align-items: cetner;
 	
 	width: fit-content;
 	margin: auto;
+}
+
+
+input[type="submit"], #cancle{
+	display: flex;
+	flex-direction: column;
+	width: 100px;
+	cursor: pointer;
 }
 

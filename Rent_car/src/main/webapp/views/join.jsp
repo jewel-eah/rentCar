@@ -26,7 +26,7 @@
 		<h2>회원가입</h2>
 		<form method="POST" action="../service">
 			<input type="hidden" name="command" value="join">
-			<table border="1">
+			<table>
 				<tr>
 					<th>회원번호</th>
 					<td><input type="number" id="cuscode" name="cuscode"
@@ -77,7 +77,7 @@
 			</table>
 			<div>
 				<input type="button" value="등록" onclick="checkValues(form)">
-				<input type="button" value="취소" onclick="location.href='/'">
+				<input type="button" value="취소" class="cancle" onclick="location.href='/'">
 			</div>
 		</form>
 	</section>

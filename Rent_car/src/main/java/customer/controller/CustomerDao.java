@@ -27,10 +27,10 @@ public class CustomerDao {
 	// create
 	public void createCustomer(CustomerRequestDto customerDto) {
 		Customer customer = new Customer(customerDto);
-		
+
 		this.conn = DBManager.getConnection();
-		if(this.conn != null) {
-			String sql = "INSERT INTO customer VALUES (?, ?, ?, ?, ?, ?, ?, TO_DATE(?, 'YYYY-MM-DD'))";
+		if (this.conn != null) {
+			String sql = "INSERT INTO customer VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
 			try {
 				this.pstmt = this.conn.prepareStatement(sql);
@@ -42,10 +42,9 @@ public class CustomerDao {
 				this.pstmt.setString(6, customer.getPassword());
 				this.pstmt.setInt(7, customer.getAge());
 				this.pstmt.setString(8, customer.getJoindate());
-				
+
 				this.pstmt.execute();
-				
-				
+
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
@@ -53,7 +52,7 @@ public class CustomerDao {
 			}
 		}
 	}
-	
+
 	// read
 	public ArrayList<Customer> getCustomerAll() {
 		ArrayList<Customer> list = new ArrayList<Customer>();
@@ -89,16 +88,52 @@ public class CustomerDao {
 		return list;
 	}
 
-	
+	// 특정 고객 정보 찾기
+
+	public Customer getCustomerById(String id) {
+		Customer customer = null;
+
+		this.conn = DBManager.getConnection();
+
+		if (this.conn != null) {
+			try {
+				String sql = "SELECT * FROM customer WHERE id =?";
+
+				this.pstmt = conn.prepareStatement(sql);
+				this.pstmt.setString(1, id);
+				this.rs = this.pstmt.executeQuery();
+
+				while (this.rs.next()) {
+					int cuscode = this.rs.getInt(1);
+					String cusname = this.rs.getString(2);
+					String contact = this.rs.getString(3);
+					String email = this.rs.getString(4);
+					String password = this.rs.getString(6);
+					int age = this.rs.getInt(7);
+					String joindate = this.rs.getString(8);
+
+					customer = new Customer(cuscode, cusname, contact, email, id, password, age, joindate);
+
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				DBManager.close(conn, pstmt, rs);
+			}
+		}
+
+		return customer;
+	}
+
 	// cus_code 마지막값찾기
 	public int getCuscodeMax() {
 		int cusCode = 1;
-		
+
 		this.conn = DBManager.getConnection();
-		
-		if(this.conn != null) {
+
+		if (this.conn != null) {
 			String sql = "SELECT MAX(cus_code) FROM customer";
-			
+
 			try {
 				this.pstmt = this.conn.prepareStatement(sql);
 				this.rs = this.pstmt.executeQuery();

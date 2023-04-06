@@ -5,8 +5,7 @@
 <meta charset="UTF-8">
 <body>
 	<footer>
-		<p> 주소: 서울특별시 서초구 서초동 1303-37 서초블유타워 13층</p>
-		<p>Copyright©붕붕붕 렌트카 All Rights Reserved.</p>
+		<p>떠나요 ~ 둘이서 ~ 모든걸 훌훌 버리고 ~ </p>
 	</footer>
 </body>
 </html>
