@@ -13,19 +13,23 @@ body {
 }
 
 header {
-	background-color: #F5EBE0;
 	color: black;
 }
 
+.head-container {
+	display: flex;
+	flex-direction: column;
+}
 h1,h2 {
 	text-align: center;
-	margin-top: 30px;
+	margin: 30px auto;
 }
 
 nav {
 	display: flex;
 	flex-direction: center;
 	justify-content: center;
+	align-items: center;
 	background-color: #F5EBE0;
 	color: darkgrey;
 }
@@ -45,7 +49,7 @@ li {
 
 
 section {
-	background-color: #FEFCF3;
+	justify-content: center;
 	color: darkgrey;
 }
 
@@ -67,11 +71,16 @@ a {
 	color: black;
 }
 	
-table {
-	width: 400px;
-	padding: 10px;
-	outline: none;
+table{
+	justify-content: cetner;
+	text-align: center;
+    width: 1000px;
+    padding: 10px;
+    outline: none;
+    margin: 5px auto;
 }
+
+
 
 td> input {
 	border: none;
@@ -83,16 +92,37 @@ form {
 	flex-direction: column;
 	justify-content: center;
 	align-items: cetner;
+	margin-bottom: 5px;
 	
 	width: fit-content;
 	margin: auto;
 }
 
+input {
+	width: 200px;
+	padding: 10px;
+	outline: none;
+	
+}
 
 input[type="submit"], #cancle{
 	display: flex;
 	flex-direction: column;
 	width: 100px;
 	cursor: pointer;
+}
+
+.writeButton {
+	margin: 10px auto;
+	width: 50px;
+}
+
+.bookDate {
+	display: flex;
+	flex-direction: column;
+}
+
+#wrtieDate {
+	width: 100px;
 }
 

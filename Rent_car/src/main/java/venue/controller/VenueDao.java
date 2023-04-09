@@ -18,7 +18,7 @@ public class VenueDao {
 	
 	private VenueDao() {}
 	private static VenueDao instance = new VenueDao();
-	public VenueDao getInstance() {
+	public static VenueDao getInstance() {
 		return instance;
 	}
 	

@@ -1,10 +1,6 @@
 package controller;
 
-import controller.action.Action;
-
-import controller.action.JoinAction;
-import controller.action.LoginAction;
-
+import controller.action.*;
 
 public class ActionFactory {
 
@@ -28,7 +24,9 @@ public class ActionFactory {
 		else if(command.equals("login")) {
 			action = new LoginAction();
 		}
-		
+		else if(command.equals("booking")) {
+			action = new BookingAction();
+		}
 		return action;
 	}
 	

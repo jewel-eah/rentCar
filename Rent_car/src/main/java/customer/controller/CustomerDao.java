@@ -147,6 +147,75 @@ public class CustomerDao {
 		}
 		return cusCode;
 	}
+	
+	// 아이디로 이름가져오기
+	public String getCusNameById(String id) {
+		String cusName = "";
+		
+		this.conn = DBManager.getConnection();
+		
+		if(this.conn != null) {
+			String sql= "SELECT cusName FROM customer WEHRE id=";
+			
+			try {
+				this.pstmt = this.conn.prepareStatement(sql);
+				this.rs = this.pstmt.executeQuery();
+				this.rs.next();
+				cusName = this.rs.getString(1);
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				DBManager.close(conn, pstmt);
+			}
+		}
+		return cusName;
+	}
+	
+	
 	// update
+	public void updateCustomer(CustomerRequestDto customerDto) {
+		this.conn = DBManager.getConnection();
+		
+		if(this.conn != null) {
+			String sql ="UPDATE customer SET cusname=?, contact=?, email=?, id=?, password=?, age=?, joindate=? WHERE cuscode=?";
+				
+			
+			try {
+				this.pstmt = this.conn.prepareStatement(sql);
+				this.pstmt.setString(1, customerDto.getCusname());
+				this.pstmt.setString(2, customerDto.getContact());
+				this.pstmt.setString(3, customerDto.getEmail());
+				this.pstmt.setString(4, customerDto.getId());
+				this.pstmt.setString(5, customerDto.getPassword());
+				this.pstmt.setInt(6, customerDto.getAge());
+				this.pstmt.setString(7, customerDto.getJoindate());
+				this.pstmt.setInt(8, customerDto.getCuscode());
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				DBManager.close(conn, pstmt);
+			}
+		}
+	}
 
+	// delete
+	public void removeCustomerById(String id) {
+		Customer customer = getCustomerById(id);
+		this.conn = DBManager.getConnection();
+		
+		if(customer != null && this.conn != null) {
+			String sql = "DELETE FROM customer WHERE id = ?;";
+			
+			try {
+				this.pstmt = this.conn.prepareStatement(sql);
+				this.pstmt.setString(1, id);
+				this.pstmt.execute();
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				DBManager.close(conn, pstmt);
+			}
+		}
+	}
+	
 }

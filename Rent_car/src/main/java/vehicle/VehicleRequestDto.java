@@ -23,6 +23,10 @@ public class VehicleRequestDto {
 		this.venueid = venueid;
 	}
 
+	public VehicleRequestDto (String venueId) {
+		this.venueid  = venueId;
+	}
+	
 	public int getCarcode() {
 		return carcode;
 	}

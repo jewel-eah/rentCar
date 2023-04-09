@@ -28,7 +28,7 @@ public class BookingDao {
 
 		this.conn = DBManager.getConnection();
 		if (this.conn != null) {
-			String sql = "INSERT INTO booking VALUES (?, ?, ?, ?, ?, ?, ?, TO_DATE(?, 'YYYY-MM-DD'))";
+			String sql = "INSERT INTO booking VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?))";
 
 			try {
 				this.pstmt = this.conn.prepareStatement(sql);
@@ -40,6 +40,8 @@ public class BookingDao {
 				this.pstmt.setInt(6, booking.getBookCode());
 				this.pstmt.setInt(7, booking.getTotalPrice());
 				this.pstmt.setString(8, booking.getBookDate());
+				this.pstmt.setString(9, booking.getStartDate());
+				this.pstmt.setString(10, booking.getPeriodDate());
 
 				this.pstmt.execute();
 
@@ -51,6 +53,30 @@ public class BookingDao {
 		}
 	}
 
+	// bookCode 생성
+	public int getBookCodeMax() {
+		int bookCode = 1;
+		
+		this.conn = DBManager.getConnection();
+		
+		if(this.conn != null) {
+			String sql = "SELECT MAX(book_code) FROM booking";
+			
+			try {
+				this.pstmt = this.conn.prepareStatement(sql);
+				this.rs = this.pstmt.executeQuery();
+				this.rs.next();
+				bookCode = this.rs.getInt(1);
+			} catch (Exception e) {
+				e.printStackTrace(); 
+			} finally {
+				DBManager.close(conn, pstmt, rs);
+			}
+		}
+		
+		return bookCode;
+	}
+	
 	// r
 
 	public ArrayList<Booking> getBookingAll() {
@@ -67,15 +93,17 @@ public class BookingDao {
 				while (this.rs.next()) {
 					int carCode = this.rs.getInt(1);
 					String cusName = this.rs.getString(2);
-					int cusCode = this.rs.getInt(2);
-					String venueId = this.rs.getString(2);
-					int hour = this.rs.getInt(2);
-					int bookCode = this.rs.getInt(2);
-					int totalPrice = this.rs.getInt(2);
-					String bookDate = this.rs.getString(2);
+					int cusCode = this.rs.getInt(3);
+					String venueId = this.rs.getString(4);
+					int hour = this.rs.getInt(5);
+					int bookCode = this.rs.getInt(6);
+					int totalPrice = this.rs.getInt(7);
+					String bookDate = this.rs.getString(8);
+					String startDate = this.rs.getString(9);
+					String periodDate = this.rs.getString(10);
 
 					Booking booking = new Booking(carCode, cusName, cusCode, venueId, hour, bookCode, totalPrice,
-							bookDate);
+							bookDate, startDate, periodDate);
 					list.add(booking);
 				}
 

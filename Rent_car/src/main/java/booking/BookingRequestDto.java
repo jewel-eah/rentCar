@@ -10,8 +10,10 @@ public class BookingRequestDto {
 	private int bookCode;
 	private int totalPrice;
 	private String bookDate;
+	private String startDate;
+	private String periodDate;
 	
-	public BookingRequestDto (int carCode, String cusName, int cusCode, String venueId, int hour, int bookCode, int totalPrice, String bookDate) {
+	public BookingRequestDto (int carCode, String cusName, int cusCode, String venueId, int hour, int bookCode, int totalPrice, String bookDate, String startDate, String periodDate) {
 		this.carCode = carCode;
 		this.cusName = cusName;
 		this.cusCode = cusCode;
@@ -20,6 +22,8 @@ public class BookingRequestDto {
 		this.bookCode = bookCode;
 		this.totalPrice = totalPrice;
 		this.bookDate = bookDate;
+		this.startDate = startDate;
+		this.periodDate = periodDate;
 	}
 
 
@@ -87,6 +91,21 @@ public class BookingRequestDto {
 		this.bookDate = bookDate;
 	}
 	
+	public String getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
+	
+	public String getPeriodDate() {
+		return periodDate;
+	}
+
+	public void setPeriodDate(String periodDate) {
+		this.periodDate = periodDate;
+	}
 	
 
 }

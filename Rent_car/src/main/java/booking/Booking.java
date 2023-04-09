@@ -10,8 +10,10 @@ public class Booking {
 	private int bookCode;
 	private int totalPrice;
 	private String bookDate;
+	private String startDate;
+	private String periodDate;
 	
-	public Booking (int carCode, String cusName, int cusCode, String venueId, int hour, int bookCode, int totalPrice, String bookDate) {
+	public Booking (int carCode, String cusName, int cusCode, String venueId, int hour, int bookCode, int totalPrice, String bookDate, String startDate, String periodDate) {
 		this.carCode = carCode;
 		this.cusName = cusName;
 		this.cusCode = cusCode;
@@ -19,17 +21,21 @@ public class Booking {
 		this.hour = hour;
 		this.bookCode = bookCode;
 		this.bookDate = bookDate;
+		this.startDate = startDate;
+		this.periodDate = periodDate;
 	}
 
-	public Booking (BookingRequestDto bookingDtoo) {
-		this.carCode = bookingDtoo.getCarCode();
-		this.cusName = bookingDtoo.getCusName();
-		this.cusCode = bookingDtoo.getCusCode();
-		this.venueId = bookingDtoo.getVenueId();
-		this.hour = bookingDtoo.getHour();
-		this.bookCode = bookingDtoo.getBookCode();
-		this.totalPrice = bookingDtoo.getTotalPrice();
-		this.bookDate = bookingDtoo.getBookDate();
+	public Booking (BookingRequestDto bookingDto) {
+		this.carCode = bookingDto.getCarCode();
+		this.cusName = bookingDto.getCusName();
+		this.cusCode = bookingDto.getCusCode();
+		this.venueId = bookingDto.getVenueId();
+		this.hour = bookingDto.getHour();
+		this.bookCode = bookingDto.getBookCode();
+		this.totalPrice = bookingDto.getTotalPrice();
+		this.bookDate = bookingDto.getBookDate();
+		this.startDate = bookingDto.getStartDate();
+		this.periodDate = bookingDto.getPeriodDate();
 	}
 
 	public int getCarCode() {
@@ -63,6 +69,16 @@ public class Booking {
 	public String getBookDate() {
 		return bookDate;
 	}
+	
+	public String getStartDate() {
+		return startDate;
+	}
+	
+	public String getPeriodDate() {
+		return periodDate;
+	}
+	
+	
 
 	
 	

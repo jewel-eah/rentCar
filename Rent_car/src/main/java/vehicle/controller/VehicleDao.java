@@ -76,14 +76,65 @@ public class VehicleDao {
 		}
 		return carCode;
 	}
+	
+	// carCode로 프라이스 찾기
+	public int getPriceByCarcode(int carCode) {
+		int total = 0;
+		
+		this.conn = DBManager.getConnection();
+		
+		if(this.conn != null) {
+			String sql = "SELECT price FROM vehicle";
+			
+			try {
+				this.pstmt = this.conn.prepareStatement(sql);
+				this.rs = this.pstmt.executeQuery();
+				this.rs.next();
+				total = this.rs.getInt(1);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				DBManager.close(conn, pstmt, rs);
+			}
+					
+		}
+		
+		return total;
+	}
+	
+	
+	// 로케이션주소 반환 
+	public String getLocationById(String venueId) {
+		String location = null;
+		
+		this.conn = DBManager.getConnection();
+		
+		if(this.conn != null){
+			String sql = "SELECT venue_id FROM venue";
+			
+			try {
+				this.pstmt = this.conn.prepareStatement(sql);
+				this.rs = this.pstmt.executeQuery();
+				this.rs.next();
+				location = this.rs.getString(1);
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				DBManager.close(conn, pstmt,rs);
+			} 
+		}
+		return location;
+	}
 
+	
 	// read
 	public ArrayList<Vehicle> getVehicleAll() {
 			ArrayList<Vehicle> list = new ArrayList<Vehicle>();
 
 			this.conn = DBManager.getConnection();
 			if (this.conn != null) {
-				String sql = "SELECT * FROM vehicles ORDER BY car_code";
+				String sql = "SELECT * FROM vehicle ORDER BY car_code";
 
 				try {
 					this.pstmt = this.conn.prepareStatement(sql);

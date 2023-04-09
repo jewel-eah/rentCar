@@ -15,7 +15,7 @@ if(welcome != null && (boolean) welcome) {%>
 	<script>alertWelcome();</script>
 <%} %>
 	<section>
-		<h1>붕붕붕 렌트카</h1>
+		<h1>뿡뿡이 렌트카 =33</h1>
 	</section>
 
 </body>
